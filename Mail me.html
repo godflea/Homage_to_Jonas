@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  
   <meta charset="UTF-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width,initial-scale=1" name="viewport">
@@ -17,13 +18,11 @@
 
   <title>Mail me</title>  
 
-<link href="./main.3f6952e4.css" rel="stylesheet"></head>
+<link href="./main.3f6952e4.css" rel="stylesheet">
+
+</head>
 
 <body class="">
-<div id="site-border-left"></div>
-<div id="site-border-right"></div>
-<div id="site-border-top"></div>
-<div id="site-border-bottom"></div>
  <!-- Add your content of header -->
 <header>
   <nav class="navbar  navbar-fixed-top navbar-default">
@@ -63,16 +62,21 @@
                   <div class="row">
                     <div class="col-md-7">
                       <div class="form-group">
-                        <input type="email" class="form-control" id="email" placeholder="Email">
+                        <input type="email" name="email" class="form-control" id="email" placeholder="Your Email">
                       </div>
                       <div class="form-group">
-                        <input type="text" class="form-control" id="subject" placeholder="Subject">
+                        <input type="text" name="subject" class="form-control" id="subject" placeholder="Dear Seohee">
                       </div>
                       <div class="form-group">
-                        <textarea class="form-control" rows="5" placeholder="Enter your message"></textarea>
+                        <textarea name="message" class="form-control" rows="5" placeholder="Enter your message"></textarea>
                       </div>
-                      <button type="submit" class="btn btn-default btn-lg">Send</button>
+                      <div class="form-group">
+                        <input type="text" name="yourname" class="form-control" id="yourname" placeholder="Your name">
+                      </div>
+                      <input type="button" id="submit" value="Send">
                     </div>
+                
+
                     <div class="col-md-5 address-container">
                       <h3>Tell your story </br>and be my friends</h3>
                       <ul class="list-unstyled">
@@ -138,7 +142,44 @@
   ga('send', 'pageview');
 </script>
 
---> <script type="text/javascript" src="./main.70a66962.js"></script></body>
+ <script type="text/javascript" src="./main.70a66962.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
+<script type="text/javascript">
+  
+	
+	$(document).ready(function() {
+		emailjs.init("AD0l43sxCTbsLCqTt");		
+        //"user_xxxxx"이 부분은 사용자마다 다르니 반드시 emailJS의 installation 화면을 확인
+        $('input[id=submit]').click(function(){       	 
+          
+          var templateParams = {	
+                subject: $('input[name=subject]').val(), 
+                email : $('input[name=email]').val(),
+                message : $('textarea[name=message]').val(),
+                yourname : $('input[name=yourname]').val()
+           				};
+                    
+                	
+         emailjs.send('service_frp9vbj', 'template_n3h9adl', templateParams)
+         //emailjs.send('service ID', 'template ID', 보낼 내용이 담긴 객체)
+         	    .then(function(response) {
+         	       console.log('SUCCESS!', response.status, response.text);
+         	    }, function(error) {
+         	       console.log('FAILED...', error);
+         	    });
+         	       
+
+
+        });
+        
+	  });
+    
+
+	</script>
+  </body>
 <style>
   @font-face {
 font-family: "DXTypeB";
