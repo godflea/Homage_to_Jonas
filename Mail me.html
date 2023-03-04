@@ -170,13 +170,21 @@
          	    }, function(error) {
          	       console.log('FAILED...', error);
          	    });
+
+        $(".modal").fadeIn()
+        
          	       
 
 
         });
         
 	  });
-    
+    $(function(){
+      $(".modal_content").click(function(){
+        $(".modal").fadeOut();
+        window.location.replace("/")
+      });
+    });
 
 	</script>
   </body>
