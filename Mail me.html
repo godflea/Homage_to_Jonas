@@ -116,7 +116,8 @@
 <div class="modal">
   <div class="modal_content" 
        title="클릭하면 창이 닫힙니다.">
-  메일이 전송되었습니다.
+  <p><span>메일이 전송되었습니다.</span></p>
+  <input type="button" value="닫기">
     
   </div>
 </div>
@@ -135,8 +136,8 @@
   position:relative; top:50%; left:50%;
   margin-top:-200px; margin-left:-200px;
   text-align:center;
-  box-sizing:border-box; padding:74px 0;
-  line-height:0px; cursor:pointer;
+  box-sizing:border-box; padding: 13px;
+  /* line-height:0px; cursor:pointer; */
 }
   </style>
 </div>
@@ -198,7 +199,7 @@
     $(function(){
       $(".modal_content").click(function(){
         $(".modal").fadeOut();
-        window.location.replace("/")
+        window.location.replace("/Mail%20me.html")
       });
     });
 
